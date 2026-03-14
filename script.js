@@ -11,9 +11,10 @@ const json = JSON.parse(text.substr(47).slice(0,-2));
 const rows = json.table.rows;
 
 function cell(r,c){
-if(!rows[r].c[c]) return "";
-return rows[r].c[c].f || rows[r].c[c].v || "";
-}}
+const row = rows[r+1];   // skip header row
+if(!row || !row.c[c]) return "";
+return row.c[c].f || row.c[c].v || "";
+}}}
 
 document.getElementById("label1").innerText = cell(0,0);
 document.getElementById("h1").innerText = cell(0,1);
