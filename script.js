@@ -53,8 +53,8 @@ document.getElementById("h4").innerText = get(6,1);
 document.getElementById("verse").innerText = get(7,1);
 document.getElementById("reference").innerText = get(8,1);
 
-document.body.style.backgroundImage =
-"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + get(9,1) + ")";
+/*document.body.style.backgroundImage =
+"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + get(9,1) + ")";*/
 
 });
 
