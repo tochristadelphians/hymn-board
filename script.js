@@ -1,22 +1,20 @@
-const sheetURL =
-"https://docs.google.com/spreadsheets/d/1MmmFbv14UMZZ-4OsKwYRXvwOlTKeUy8q4x-DRAflQtg/gviz/tq?tqx=out:json&gid=0";
+const sheetURL = "https://docs.google.com/spreadsheets/d/1MmmFbv14UMZZ-4OsKwYRXvwOlTKeUy8q4x-DRAflQtg/gviz/tq?tqx=out:json&gid=0";
 
-function updateBoard(){
+function updateBoard() {
 
 fetch(sheetURL + "&t=" + Date.now())
-.then(res => res.text())
-.then(text => {
+.then(function(response){
+return response.text();
+})
+.then(function(text){
 
-const json = JSON.parse(text.substring(47).slice(0,-2));
-const rows = json.table.rows;
+var json = JSON.parse(text.substring(47, text.length-2));
+var rows = json.table.rows;
 
 function get(r,c){
-const cell = rows[r]?.c[c];
-if(!cell) return "";
-return cell.f || cell.v || "";
+if(!rows[r] || !rows[r].c[c]) return "";
+return rows[r].c[c].f || rows[r].c[c].v || "";
 }
-
-/* rows start at 1 because row 0 is header */
 
 document.getElementById("label1").innerText = get(1,0);
 document.getElementById("h1").innerText = get(1,1);
@@ -42,6 +40,9 @@ document.getElementById("reference").innerText = get(8,1);
 document.body.style.backgroundImage =
 "linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + get(9,1) + ")";
 
+})
+.catch(function(error){
+console.log(error);
 });
 
 }
