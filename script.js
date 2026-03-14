@@ -1,5 +1,21 @@
 const sheetURL = "https://docs.google.com/spreadsheets/d/1MmmFbv14UMZZ-4OsKwYRXvwOlTKeUy8q4x-DRAflQtg/gviz/tq?tqx=out:json&gid=0";
 
+function updateClock(){
+
+const now = new Date();
+
+let h = now.getHours();
+let m = now.getMinutes();
+
+if(m < 10) m = "0" + m;
+
+document.getElementById("clock").innerText = h + ":" + m;
+
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
 function updateBoard(){
 
 fetch(sheetURL + "&t=" + Date.now())
