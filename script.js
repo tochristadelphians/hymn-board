@@ -7,43 +7,42 @@ fetch(sheetURL + "&t=" + Date.now())
 .then(res => res.text())
 .then(text => {
 
-const json = JSON.parse(text.substring(47).slice(0,-2));
+/* remove Google's wrapper */
+const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
+
 const rows = json.table.rows;
 
-const data = rows.map(r => ({
-label: r.c[0]?.v || "",
-value: r.c[1]?.v || ""
-}));
+function cell(r,c){
+return rows[r].c[c] ? rows[r].c[c].v : "";
+}
 
-document.getElementById("label1").innerText = data[0].label;
-document.getElementById("h1").innerText = data[0].value;
+document.getElementById("label1").innerText = cell(0,0);
+document.getElementById("h1").innerText = cell(0,1);
 
-document.getElementById("label2").innerText = data[1].label;
-document.getElementById("psalm").innerText = data[1].value;
+document.getElementById("label2").innerText = cell(1,0);
+document.getElementById("psalm").innerText = cell(1,1);
 
-document.getElementById("label3").innerText = data[2].label;
-document.getElementById("reading").innerText = data[2].value;
+document.getElementById("label3").innerText = cell(2,0);
+document.getElementById("reading").innerText = cell(2,1);
 
-document.getElementById("label4").innerText = data[3].label;
-document.getElementById("h2").innerText = data[3].value;
+document.getElementById("label4").innerText = cell(3,0);
+document.getElementById("h2").innerText = cell(3,1);
 
-document.getElementById("label5").innerText = data[4].label;
-document.getElementById("h3").innerText = data[4].value;
+document.getElementById("label5").innerText = cell(4,0);
+document.getElementById("h3").innerText = cell(4,1);
 
-document.getElementById("label6").innerText = data[5].label;
-document.getElementById("h4").innerText = data[5].value;
+document.getElementById("label6").innerText = cell(5,0);
+document.getElementById("h4").innerText = cell(5,1);
 
-document.getElementById("verse").innerText = data[6].value;
-document.getElementById("reference").innerText = data[7].value;
+document.getElementById("verse").innerText = cell(6,1);
+document.getElementById("reference").innerText = cell(7,1);
 
 document.body.style.backgroundImage =
-"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + data[8].value + ")";
+"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + cell(8,1) + ")";
 
 });
 
 }
 
 updateBoard();
-
-/* refresh every 30 seconds */
 setInterval(updateBoard,30000);
