@@ -36,8 +36,20 @@ justify-content:space-between;
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-font-size:6vh;
-row-gap:1vh;
+row-gap:1.5vh;
+align-items:center;
+}
+
+/* left column (labels like Hymn, Micah, Hebrews) */
+.grid div:nth-child(odd){
+font-size:4.5vh;
+opacity:0.9;
+}
+
+/* right column (numbers/readings) */
+.grid div:nth-child(even){
+font-size:10vh;
+font-weight:bold;
 }
 
 .right{
