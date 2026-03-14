@@ -1,5 +1,5 @@
 const sheetURL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vQb8UDeP4MqBcpsJ0FklphnjHxLOFNsGNWtTQ1xcfOn1Mgx_ezQcE1xnw1A7-jFkxr6KW6bD1t5CaJ-/gviz/tq?tqx=out:json";
+"https://docs.google.com/spreadsheets/d/1MmmFbv14UMZZ-4OsKwYRXvwOlTKeUy8q4x-DRAflQtg/gviz/tq?tqx=out:json&gid=0";
 
 function updateBoard(){
 
@@ -7,9 +7,7 @@ fetch(sheetURL + "&t=" + Date.now())
 .then(res => res.text())
 .then(text => {
 
-/* remove Google's wrapper */
-const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
-
+const json = JSON.parse(text.substr(47).slice(0,-2));
 const rows = json.table.rows;
 
 function cell(r,c){
