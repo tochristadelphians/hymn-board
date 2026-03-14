@@ -39,4 +39,4 @@ document.body.style.backgroundImage =
 
 updateBoard();
 
-setInterval(updateBoard,10000);
+setInterval(updateBoard,30000);
