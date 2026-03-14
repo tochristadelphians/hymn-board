@@ -8,28 +8,30 @@ fetch(sheetURL + "&t=" + new Date().getTime())
 
 const rows = data.split("\n").map(r => r.split(","));
 
-document.getElementById("label1").innerText = rows[1][0];
-document.getElementById("h1").innerText = rows[1][1];
+document.getElementById("label1").innerText = rows[1][0].trim();
+document.getElementById("h1").innerText = rows[1][1].trim();
 
-document.getElementById("label2").innerText = rows[2][0];
-document.getElementById("psalm").innerText = rows[2][1];
+document.getElementById("label2").innerText = rows[2][0].trim();
+document.getElementById("psalm").innerText = rows[2][1].trim();
 
-document.getElementById("label3").innerText = rows[3][0];
-document.getElementById("reading").innerText = rows[3][1];
+document.getElementById("label3").innerText = rows[3][0].trim();
+document.getElementById("reading").innerText = rows[3][1].trim();
 
-document.getElementById("label4").innerText = rows[4][0];
-document.getElementById("h2").innerText = rows[4][1];
+document.getElementById("label4").innerText = rows[4][0].trim();
+document.getElementById("h2").innerText = rows[4][1].trim();
 
-document.getElementById("label5").innerText = rows[5][0];
-document.getElementById("h3").innerText = rows[5][1];
+document.getElementById("label5").innerText = rows[5][0].trim();
+document.getElementById("h3").innerText = rows[5][1].trim();
 
-document.getElementById("label6").innerText = rows[6][0];
-document.getElementById("h4").innerText = rows[6][1];
-document.getElementById("verse").innerText = rows[7][1];
-document.getElementById("reference").innerText = rows[8][1];
+document.getElementById("label6").innerText = rows[6][0].trim();
+document.getElementById("h4").innerText = rows[6][1].trim();
 
+document.getElementById("verse").innerText = rows[7][1].trim();
+document.getElementById("reference").innerText = rows[8][1].trim();
+
+const bg = rows[9][1].trim();
 document.body.style.backgroundImage =
-"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + rows[9][1] + ")";
+"linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)), url(" + bg + ")";
 
 });
 
