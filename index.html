@@ -2,12 +2,90 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Meeting Board</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+background-size:cover;
+background-position:center;
+}
+
+.overlay{
+background:rgba(0,0,0,0.45);
+height:100vh;
+padding:100px;
+}
+
+.grid{
+display:grid;
+grid-template-columns: 1fr 1fr;
+font-size:80px;
+row-gap:35px;
+}
+
+.right{
+text-align:right;
+}
+
+.verse{
+position:absolute;
+bottom:80px;
+left:100px;
+right:100px;
+font-size:34px;
+}
+
+.reference{
+margin-top:20px;
+border-top:2px solid white;
+padding-top:10px;
+font-size:28px;
+}
+
+</style>
+
 </head>
 
-<body style="background:black;color:white;font-size:60px;text-align:center;margin-top:200px;">
+<body>
 
-Meeting Board Running
+<div class="overlay">
+
+<div class="grid">
+
+<div>Hymn</div>
+<div class="right" id="h1"></div>
+
+<div>Psalm</div>
+<div class="right" id="psalm"></div>
+
+<div>Hebrews</div>
+<div class="right" id="reading"></div>
+
+<div>Hymn</div>
+<div class="right" id="h2"></div>
+
+<div>Hymn</div>
+<div class="right" id="h3"></div>
+
+<div>Hymn</div>
+<div class="right" id="h4"></div>
+
+</div>
+
+<div class="verse">
+
+<div id="verse"></div>
+
+<div class="reference" id="reference"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
