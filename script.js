@@ -11,8 +11,9 @@ const json = JSON.parse(text.substr(47).slice(0,-2));
 const rows = json.table.rows;
 
 function cell(r,c){
-return rows[r].c[c] ? rows[r].c[c].v : "";
-}
+if(!rows[r].c[c]) return "";
+return rows[r].c[c].f || rows[r].c[c].v || "";
+}}
 
 document.getElementById("label1").innerText = cell(0,0);
 document.getElementById("h1").innerText = cell(0,1);
